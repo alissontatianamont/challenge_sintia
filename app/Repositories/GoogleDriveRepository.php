@@ -4,8 +4,6 @@ namespace App\Repositories;
 
 use App\Contracts\GoogleDriveRepositoryInterface;
 use Illuminate\Support\Facades\Http;
-use Google\Client as GoogleClient;
-use Google\Service\Drive;
 
 class GoogleDriveRepository implements GoogleDriveRepositoryInterface
 {

@@ -4,13 +4,16 @@ namespace App\Livewire\FilesModule;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 use App\Contracts\FileInterface;
 use App\Http\Requests\UploadFileRequest;
 use Illuminate\Support\Facades\Validator;
 
 class UploadFile extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
+
+    protected $paginationTheme = 'tailwind';
 
     public $file_cp;
     public $fileBaseName;
@@ -26,7 +29,7 @@ class UploadFile extends Component
 
     public function render()
     {
-        $recent = $this->fileService->latest(10);
+        $recent = $this->fileService->latestPaginated(10);
         return view('livewire.files-module.upload-file', [
             'recentFiles' => $recent,
         ]);

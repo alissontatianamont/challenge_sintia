@@ -47,7 +47,7 @@
                         <strong>Archivo seleccionado:</strong> Se generará un nombre automático
                     </p>
                     <p class="text-xs text-yellow-600">
-                        formato: archivo_YYYY-MM-DD_HH-mm-ss
+                        formato: archivo / nombre_personalizado
                     </p>
                 </div>
             @endif
@@ -100,6 +100,10 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
+
+        <div class="mt-4">
+            {{ $recentFiles->links() }}
         </div>
     </div>
     @endisset

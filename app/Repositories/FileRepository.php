@@ -3,6 +3,7 @@
 namespace App\Repositories;
 use App\Models\FileRegister;
 use Illuminate\Support\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class FileRepository
 {
@@ -24,5 +25,13 @@ class FileRepository
             ->orderByDesc('file_created')
             ->limit($limit)
             ->get();
+    }
+
+    public function latestPaginated(int $perPage = 10): LengthAwarePaginator
+    {
+        return $this->fileRegister
+            ->with('user')
+            ->orderByDesc('file_created')
+            ->paginate($perPage);
     }
 }

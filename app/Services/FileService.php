@@ -39,4 +39,9 @@ class FileService implements FileInterface
     {
         return $this->files->latest($limit);
     }
+
+    public function latestPaginated(int $perPage = 10): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    {
+        return $this->files->latestPaginated($perPage);
+    }
 }
