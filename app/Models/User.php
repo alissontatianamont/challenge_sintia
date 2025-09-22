@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function files()
+    {
+        return $this->hasMany(FileRegister::class, 'file_user_id');
+    }
 }
